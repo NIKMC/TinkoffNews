@@ -13,6 +13,14 @@
 		0239D61820EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0239D61620EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld */; };
 		0239D61A20EE83C100ED5D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0239D61920EE83C100ED5D67 /* Assets.xcassets */; };
 		0239D61D20EE83C100ED5D67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0239D61B20EE83C100ED5D67 /* LaunchScreen.storyboard */; };
+		0239D62920EF659400ED5D67 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D62820EF659400ED5D67 /* NewsTableViewController.swift */; };
+		0239D62B20EF65C600ED5D67 /* NewsViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D62A20EF65C600ED5D67 /* NewsViewTableViewCell.swift */; };
+		0239D63020EF722300ED5D67 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D62F20EF722300ED5D67 /* Storable.swift */; };
+		0239D63220EF728500ED5D67 /* StorableContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D63120EF728500ED5D67 /* StorableContext.swift */; };
+		0239D63420EF758600ED5D67 /* CoreDataStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D63320EF758600ED5D67 /* CoreDataStorageContext.swift */; };
+		0239D63620EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D63520EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift */; };
+		0269DD7820EF876800C65F9F /* NewsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD7720EF876800C65F9F /* NewsJSON.swift */; };
+		0269DD8020F0B46C00C65F9F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD7F20F0B46C00C65F9F /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		0239D61920EE83C100ED5D67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0239D61C20EE83C100ED5D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0239D61E20EE83C100ED5D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0239D62820EF659400ED5D67 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		0239D62A20EF65C600ED5D67 /* NewsViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewTableViewCell.swift; sourceTree = "<group>"; };
+		0239D62F20EF722300ED5D67 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		0239D63120EF728500ED5D67 /* StorableContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableContext.swift; sourceTree = "<group>"; };
+		0239D63320EF758600ED5D67 /* CoreDataStorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageContext.swift; sourceTree = "<group>"; };
+		0239D63520EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoraDataStorageContextOperations.swift; sourceTree = "<group>"; };
+		0269DD7720EF876800C65F9F /* NewsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsJSON.swift; sourceTree = "<group>"; };
+		0269DD7F20F0B46C00C65F9F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,55 @@
 		0239D60E20EE83BF00ED5D67 /* Tinkoff News */ = {
 			isa = PBXGroup;
 			children = (
-				0239D60F20EE83BF00ED5D67 /* AppDelegate.swift */,
+				0269DD7D20EF9B2E00C65F9F /* Supporting Files */,
+				0239D62D20EF710400ED5D67 /* DBLayer */,
 				0239D61120EE83BF00ED5D67 /* ViewController.swift */,
 				0239D61320EE83BF00ED5D67 /* Main.storyboard */,
-				0239D61920EE83C100ED5D67 /* Assets.xcassets */,
-				0239D61B20EE83C100ED5D67 /* LaunchScreen.storyboard */,
 				0239D61E20EE83C100ED5D67 /* Info.plist */,
 				0239D61620EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld */,
+				0239D62820EF659400ED5D67 /* NewsTableViewController.swift */,
+				0239D62A20EF65C600ED5D67 /* NewsViewTableViewCell.swift */,
+				0269DD7720EF876800C65F9F /* NewsJSON.swift */,
 			);
 			path = "Tinkoff News";
+			sourceTree = "<group>";
+		};
+		0239D62D20EF710400ED5D67 /* DBLayer */ = {
+			isa = PBXGroup;
+			children = (
+				0239D62F20EF722300ED5D67 /* Storable.swift */,
+				0239D63120EF728500ED5D67 /* StorableContext.swift */,
+				0269DD7E20F0B2F800C65F9F /* Core Data */,
+				0269DD8120F0B47E00C65F9F /* Entities */,
+			);
+			path = DBLayer;
+			sourceTree = "<group>";
+		};
+		0269DD7D20EF9B2E00C65F9F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0239D60F20EE83BF00ED5D67 /* AppDelegate.swift */,
+				0239D61920EE83C100ED5D67 /* Assets.xcassets */,
+				0239D61B20EE83C100ED5D67 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0269DD7E20F0B2F800C65F9F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				0239D63320EF758600ED5D67 /* CoreDataStorageContext.swift */,
+				0239D63520EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		0269DD8120F0B47E00C65F9F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0269DD7F20F0B46C00C65F9F /* News.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +194,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0239D62B20EF65C600ED5D67 /* NewsViewTableViewCell.swift in Sources */,
+				0239D63420EF758600ED5D67 /* CoreDataStorageContext.swift in Sources */,
 				0239D61220EE83BF00ED5D67 /* ViewController.swift in Sources */,
+				0239D63620EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift in Sources */,
+				0239D62920EF659400ED5D67 /* NewsTableViewController.swift in Sources */,
+				0239D63220EF728500ED5D67 /* StorableContext.swift in Sources */,
+				0269DD8020F0B46C00C65F9F /* News.swift in Sources */,
+				0239D63020EF722300ED5D67 /* Storable.swift in Sources */,
 				0239D61020EE83BF00ED5D67 /* AppDelegate.swift in Sources */,
+				0269DD7820EF876800C65F9F /* NewsJSON.swift in Sources */,
 				0239D61820EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

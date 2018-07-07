@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oU8-Kl-e83">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,294 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tinkoff_News" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOD-ev-a4Y">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXb-pN-QJf" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр Разработки в Сочи" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0i-a5-X0P">
+                                                <rect key="frame" x="16" y="16" width="343" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="MZL-7p-NLT"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tinkoff" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-F8-fhq">
+                                                <rect key="frame" x="16" y="90" width="343" height="183"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="183" id="pWs-RO-iBl"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Ea-5s-h9R">
+                                                <rect key="frame" x="16" y="293" width="343" height="290"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUA-Fn-ANs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="290"/>
+                                                        <mutableString key="text"> Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр</mutableString>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Published: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3j1-sw-JrL">
+                                                        <rect key="frame" x="0.0" y="290" width="343" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="3j1-sw-JrL" secondAttribute="bottom" id="4Yx-zO-A7z"/>
+                                                    <constraint firstItem="3j1-sw-JrL" firstAttribute="leading" secondItem="9Ea-5s-h9R" secondAttribute="leading" id="HbV-87-Ali"/>
+                                                    <constraint firstItem="LUA-Fn-ANs" firstAttribute="top" secondItem="9Ea-5s-h9R" secondAttribute="top" id="NWS-YL-3iZ"/>
+                                                    <constraint firstItem="3j1-sw-JrL" firstAttribute="leading" secondItem="9Ea-5s-h9R" secondAttribute="leading" id="SM0-oa-tw4"/>
+                                                    <constraint firstItem="LUA-Fn-ANs" firstAttribute="leading" secondItem="9Ea-5s-h9R" secondAttribute="leading" id="h2m-mD-xCY"/>
+                                                    <constraint firstItem="3j1-sw-JrL" firstAttribute="centerX" secondItem="9Ea-5s-h9R" secondAttribute="centerX" id="uNV-N1-y7T"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="u0i-a5-X0P" firstAttribute="top" secondItem="rXb-pN-QJf" secondAttribute="top" constant="16" id="2Gf-cW-PvU"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9Ea-5s-h9R" secondAttribute="bottom" constant="20" id="5Od-ae-8TS"/>
+                                            <constraint firstAttribute="trailing" secondItem="fNt-F8-fhq" secondAttribute="trailing" constant="16" id="B1u-oH-cYh"/>
+                                            <constraint firstItem="u0i-a5-X0P" firstAttribute="leading" secondItem="rXb-pN-QJf" secondAttribute="leading" constant="16" id="HhX-l8-Dk5"/>
+                                            <constraint firstItem="fNt-F8-fhq" firstAttribute="leading" secondItem="rXb-pN-QJf" secondAttribute="leading" constant="16" id="KKm-Pf-9HL"/>
+                                            <constraint firstItem="fNt-F8-fhq" firstAttribute="top" secondItem="u0i-a5-X0P" secondAttribute="bottom" constant="20" id="Mrc-Mk-77g"/>
+                                            <constraint firstItem="u0i-a5-X0P" firstAttribute="centerX" secondItem="rXb-pN-QJf" secondAttribute="centerX" id="SKJ-Rs-846"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Ea-5s-h9R" secondAttribute="trailing" constant="16" id="mcN-AO-EwY"/>
+                                            <constraint firstItem="9Ea-5s-h9R" firstAttribute="top" secondItem="fNt-F8-fhq" secondAttribute="bottom" constant="20" id="vXW-LO-y76"/>
+                                            <constraint firstItem="9Ea-5s-h9R" firstAttribute="leading" secondItem="rXb-pN-QJf" secondAttribute="leading" constant="16" id="wsA-ov-qzI"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rXb-pN-QJf" firstAttribute="top" secondItem="wOD-ev-a4Y" secondAttribute="top" id="Tg8-wY-ZJE"/>
+                                    <constraint firstItem="rXb-pN-QJf" firstAttribute="leading" secondItem="wOD-ev-a4Y" secondAttribute="leading" id="U4h-h4-je4"/>
+                                    <constraint firstItem="rXb-pN-QJf" firstAttribute="height" secondItem="wOD-ev-a4Y" secondAttribute="height" id="ajF-GS-k5C"/>
+                                    <constraint firstItem="rXb-pN-QJf" firstAttribute="width" secondItem="wOD-ev-a4Y" secondAttribute="width" id="eCd-c7-mz1"/>
+                                    <constraint firstAttribute="bottom" secondItem="rXb-pN-QJf" secondAttribute="bottom" id="j6P-Tb-Fe4"/>
+                                    <constraint firstAttribute="trailing" secondItem="rXb-pN-QJf" secondAttribute="trailing" id="lt8-YY-XW9"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wOD-ev-a4Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0Bc-ub-dlr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wOD-ev-a4Y" secondAttribute="bottom" id="RJ5-IH-yD5"/>
+                            <constraint firstItem="wOD-ev-a4Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nop-BJ-Gat"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wOD-ev-a4Y" secondAttribute="trailing" id="rnj-Yq-5YZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1812" y="133.5832083958021"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="IWr-PT-sJv">
+            <objects>
+                <tableViewController id="MlN-fC-7AT" customClass="NewsTableViewController" customModule="Tinkoff_News" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aRZ-Ap-MCH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="80" id="N7m-t2-x7Y" customClass="NewsViewTableViewCell" customModule="Tinkoff_News" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N7m-t2-x7Y" id="ipq-d8-BRs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр Разработки в Сочи" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8p-SZ-WTA">
+                                            <rect key="frame" x="16" y="10" width="300" height="59.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G85-dm-WJp">
+                                            <rect key="frame" x="331" y="29" width="28" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="45" id="PJv-rd-yfi"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="C8p-SZ-WTA" firstAttribute="top" secondItem="ipq-d8-BRs" secondAttribute="top" constant="10" id="02y-O4-bZX"/>
+                                        <constraint firstItem="G85-dm-WJp" firstAttribute="top" secondItem="ipq-d8-BRs" secondAttribute="top" constant="29" id="3rj-bD-TBp"/>
+                                        <constraint firstItem="G85-dm-WJp" firstAttribute="leading" secondItem="C8p-SZ-WTA" secondAttribute="trailing" constant="15" id="DAF-Wu-rQk"/>
+                                        <constraint firstAttribute="bottom" secondItem="G85-dm-WJp" secondAttribute="bottom" constant="29.5" id="H3Z-wv-W4o"/>
+                                        <constraint firstItem="G85-dm-WJp" firstAttribute="centerY" secondItem="ipq-d8-BRs" secondAttribute="centerY" id="Ih8-3b-mxJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="C8p-SZ-WTA" secondAttribute="bottom" constant="10" id="JJo-9X-Bth"/>
+                                        <constraint firstItem="C8p-SZ-WTA" firstAttribute="centerY" secondItem="ipq-d8-BRs" secondAttribute="centerY" id="ULN-6x-N3g"/>
+                                        <constraint firstItem="C8p-SZ-WTA" firstAttribute="leading" secondItem="ipq-d8-BRs" secondAttribute="leading" constant="16" id="UqC-jO-uil"/>
+                                        <constraint firstAttribute="trailing" secondItem="G85-dm-WJp" secondAttribute="trailing" constant="16" id="jXt-A3-2Hy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="counterLabel" destination="G85-dm-WJp" id="UUt-jk-gbh"/>
+                                    <outlet property="titleNewsLabel" destination="C8p-SZ-WTA" id="Yfk-zf-J6B"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MlN-fC-7AT" id="OgQ-KT-gKZ"/>
+                            <outlet property="delegate" destination="MlN-fC-7AT" id="r1N-L3-7zC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="News" id="AR9-fk-5ar"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="et7-Fu-P45">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToDetailedNews" id="QDf-dh-sJq"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XaY-ct-mPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="t3I-mV-Vbr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ORC-kX-Yau" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zae-Vq-B53">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MlN-fC-7AT" kind="relationship" relationship="rootViewController" id="zgz-x9-kjL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5yA-A7-9Dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.199999999999999" y="133.5832083958021"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1FH-5G-nPD">
+            <objects>
+                <viewController id="oU8-Kl-e83" customClass="ViewController" customModule="Tinkoff_News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mvk-Aa-tZx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57Z-Im-HOs">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkc-fE-sDa" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр Разработки в Сочи" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDd-cd-0Ic">
+                                                <rect key="frame" x="16" y="16" width="343" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="2I2-70-aro"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tinkoff" translatesAutoresizingMaskIntoConstraints="NO" id="hzx-eR-jet">
+                                                <rect key="frame" x="16" y="90" width="343" height="183"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="183" id="dtk-b5-2eZ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ql1-MK-RoD">
+                                                <rect key="frame" x="16" y="293" width="343" height="334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqy-EA-odY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="334"/>
+                                                        <mutableString key="text">&lt;p&gt;Москва, Россия&amp;nbsp;— 1 июня 2018&amp;nbsp;г.&lt;br&gt;Тинькофф Банк договорился о&amp;nbsp;сотрудничестве с&amp;nbsp;тремя стартапами в&amp;nbsp;области финтеха и&amp;nbsp;современных технологий: «Иммерсия», Cashoff и&amp;nbsp;«Оз&amp;nbsp;Форензика». Соглашения были подписаны на&amp;nbsp;конференции Skolkovo Startup Village 2018. Банк выступил стратегическим партнером мероприятия.&lt;/p&gt;&lt;p&gt;«Иммерсия» разработала проект по&amp;nbsp;визуализации вариантов жилья одной и&amp;nbsp;той&amp;nbsp;же планировки для разных аудиторий. На&amp;nbsp;данный момент команда работает над развитием проекта, создавая платформу &lt;nobr&gt;экспресс-проектирования&lt;/nobr&gt; интерьеров с&amp;nbsp;поддержкой виртуальной и&amp;nbsp;дополненной реальности. Предлагаемые решения позволят повысить конверсию в&amp;nbsp;заявки на&amp;nbsp;ипотечные продукты.&lt;/p&gt;&lt;p&gt;Cashoff примет участие в&amp;nbsp;развитии основанных на&amp;nbsp;блокчейне сервисов по&amp;nbsp;начислению клиентам Банка кэшбэка от&amp;nbsp;производителей за&amp;nbsp;купленный товар. Стороны ранее успешно работали над сбором и&amp;nbsp;обработкой финансовых данных, поэтому приняли решение расширить формат партнерства.&lt;/p&gt;&lt;p&gt;«Оз&amp;nbsp;Форензика» разработает оплачиваемый пилотный проект по&amp;nbsp;автоматизированной проверке документов на&amp;nbsp;достоверность. Ранее технология была протестирована в&amp;nbsp;процессах страхового обслуживания. Тинькофф Банк давно применяет системы автоматической верификации документов и&amp;nbsp;клиентов, поэтому видит перспективы развития сотрудничества с&amp;nbsp;компанией.&lt;/p&gt;&lt;p&gt;«Мы&amp;nbsp;всегда следим за&amp;nbsp;рынком и&amp;nbsp;особое внимание уделяем комплементарным нам бизнесам и&amp;nbsp;проектам. Если компания может расширить экосистему финансового супермаркета Тинькофф или усилить отдельные ее&amp;nbsp;элементы, мы&amp;nbsp;с&amp;nbsp;интересом рассматриваем различные варианты сотрудничества: от&amp;nbsp;пилотных проектов до&amp;nbsp;приобретения долей в&amp;nbsp;компании»,&amp;nbsp;— прокомментировал Вячеслав Цыганов, &lt;nobr&gt;вице-президент&lt;/nobr&gt;, директор по&amp;nbsp;информационным технологиям Тинькофф Банка.&lt;/p&gt;</mutableString>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Published: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQl-4m-pIQ">
+                                                        <rect key="frame" x="0.0" y="334" width="343" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="cQl-4m-pIQ" secondAttribute="bottom" id="H7k-NI-dIC"/>
+                                                    <constraint firstItem="cQl-4m-pIQ" firstAttribute="leading" secondItem="ql1-MK-RoD" secondAttribute="leading" id="WdG-p2-LAF"/>
+                                                    <constraint firstItem="Iqy-EA-odY" firstAttribute="top" secondItem="ql1-MK-RoD" secondAttribute="top" id="avg-yT-JlR"/>
+                                                    <constraint firstItem="cQl-4m-pIQ" firstAttribute="centerX" secondItem="ql1-MK-RoD" secondAttribute="centerX" id="fWP-Kq-M1P"/>
+                                                    <constraint firstItem="cQl-4m-pIQ" firstAttribute="leading" secondItem="ql1-MK-RoD" secondAttribute="leading" id="mdk-yq-PKf"/>
+                                                    <constraint firstItem="Iqy-EA-odY" firstAttribute="leading" secondItem="ql1-MK-RoD" secondAttribute="leading" id="wt4-SI-Pwd"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="dDd-cd-0Ic" firstAttribute="leading" secondItem="Hkc-fE-sDa" secondAttribute="leading" constant="16" id="0lD-lk-p6C"/>
+                                            <constraint firstItem="ql1-MK-RoD" firstAttribute="leading" secondItem="Hkc-fE-sDa" secondAttribute="leading" constant="16" id="Anq-Vj-BNs"/>
+                                            <constraint firstAttribute="trailing" secondItem="hzx-eR-jet" secondAttribute="trailing" constant="16" id="F9a-8v-1BP"/>
+                                            <constraint firstItem="ql1-MK-RoD" firstAttribute="top" secondItem="hzx-eR-jet" secondAttribute="bottom" constant="20" id="Jlb-D8-NkA"/>
+                                            <constraint firstItem="hzx-eR-jet" firstAttribute="leading" secondItem="Hkc-fE-sDa" secondAttribute="leading" constant="16" id="eft-tE-hJr"/>
+                                            <constraint firstItem="dDd-cd-0Ic" firstAttribute="top" secondItem="Hkc-fE-sDa" secondAttribute="top" constant="16" id="kq8-w5-Qjr"/>
+                                            <constraint firstItem="dDd-cd-0Ic" firstAttribute="centerX" secondItem="Hkc-fE-sDa" secondAttribute="centerX" id="o7u-iz-RMw"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ql1-MK-RoD" secondAttribute="bottom" constant="20" id="p98-cl-ROF"/>
+                                            <constraint firstItem="hzx-eR-jet" firstAttribute="top" secondItem="dDd-cd-0Ic" secondAttribute="bottom" constant="20" id="pao-Uw-ge8"/>
+                                            <constraint firstAttribute="trailing" secondItem="ql1-MK-RoD" secondAttribute="trailing" constant="16" id="txr-St-kXY"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Hkc-fE-sDa" firstAttribute="width" secondItem="57Z-Im-HOs" secondAttribute="width" id="RGD-91-g3w"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hkc-fE-sDa" secondAttribute="trailing" id="bEf-V7-4pU"/>
+                                    <constraint firstItem="Hkc-fE-sDa" firstAttribute="top" secondItem="57Z-Im-HOs" secondAttribute="top" id="bSS-cl-uJC"/>
+                                    <constraint firstItem="Hkc-fE-sDa" firstAttribute="leading" secondItem="57Z-Im-HOs" secondAttribute="leading" id="g1b-3R-S2v"/>
+                                    <constraint firstItem="Hkc-fE-sDa" firstAttribute="height" secondItem="57Z-Im-HOs" secondAttribute="height" id="hce-JI-nDo"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hkc-fE-sDa" secondAttribute="bottom" id="t2o-bT-WVE"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="im8-sQ-2oy" firstAttribute="bottom" secondItem="57Z-Im-HOs" secondAttribute="bottom" id="EqF-St-sr2"/>
+                            <constraint firstItem="im8-sQ-2oy" firstAttribute="trailing" secondItem="57Z-Im-HOs" secondAttribute="trailing" id="jll-23-ZVe"/>
+                            <constraint firstItem="57Z-Im-HOs" firstAttribute="leading" secondItem="im8-sQ-2oy" secondAttribute="leading" id="mdI-no-HqD"/>
+                            <constraint firstItem="57Z-Im-HOs" firstAttribute="top" secondItem="im8-sQ-2oy" secondAttribute="top" id="pPm-cH-f9t"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="im8-sQ-2oy"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateTimeLabel" destination="cQl-4m-pIQ" id="a8A-0n-kf3"/>
+                        <outlet property="textLabel" destination="Iqy-EA-odY" id="pyf-fu-sNG"/>
+                        <outlet property="titleLabel" destination="dDd-cd-0Ic" id="atQ-B4-S0r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epS-5P-LhN" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="851"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tinkoff" width="300" height="183"/>
+    </resources>
 </document>
