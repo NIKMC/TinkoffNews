@@ -12,6 +12,13 @@ class NewsViewTableViewCell: UITableViewCell {
     @IBOutlet weak var titleNewsLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
     
+    weak var viewModel: TableViewCellViewModelType? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            titleNewsLabel.text = viewModel.title
+            counterLabel.text = viewModel.counter
+        }
+    }
     
 
 }

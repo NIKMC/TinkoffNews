@@ -12,10 +12,8 @@ import CoreData
 protocol Storable {
 }
 
-extension NSManagedObject: Storable {
-    
-}
+extension NSManagedObject: Storable {}
 
-extension NewsJSON: Storable{
-    
-}
+//extension FullNews: Storable{
+//
+//}

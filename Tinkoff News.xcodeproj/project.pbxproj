@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0239D61020EE83BF00ED5D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D60F20EE83BF00ED5D67 /* AppDelegate.swift */; };
-		0239D61220EE83BF00ED5D67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D61120EE83BF00ED5D67 /* ViewController.swift */; };
+		0239D61220EE83BF00ED5D67 /* DetailedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D61120EE83BF00ED5D67 /* DetailedNewsViewController.swift */; };
 		0239D61520EE83BF00ED5D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0239D61320EE83BF00ED5D67 /* Main.storyboard */; };
 		0239D61820EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0239D61620EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld */; };
 		0239D61A20EE83C100ED5D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0239D61920EE83C100ED5D67 /* Assets.xcassets */; };
@@ -19,14 +19,21 @@
 		0239D63220EF728500ED5D67 /* StorableContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D63120EF728500ED5D67 /* StorableContext.swift */; };
 		0239D63420EF758600ED5D67 /* CoreDataStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D63320EF758600ED5D67 /* CoreDataStorageContext.swift */; };
 		0239D63620EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239D63520EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift */; };
-		0269DD7820EF876800C65F9F /* NewsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD7720EF876800C65F9F /* NewsJSON.swift */; };
+		0269DD7820EF876800C65F9F /* FullNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD7720EF876800C65F9F /* FullNews.swift */; };
 		0269DD8020F0B46C00C65F9F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD7F20F0B46C00C65F9F /* News.swift */; };
+		0269DD8320F0FE5B00C65F9F /* DetailedNewsViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD8220F0FE5B00C65F9F /* DetailedNewsViewModelType.swift */; };
+		0269DD8520F0FE9700C65F9F /* TableViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD8420F0FE9700C65F9F /* TableViewModelType.swift */; };
+		0269DD8720F0FED100C65F9F /* TableViewCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD8620F0FED100C65F9F /* TableViewCellViewModelType.swift */; };
+		0269DD8B20F1007000C65F9F /* ObjectOfNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD8A20F1007000C65F9F /* ObjectOfNews.swift */; };
+		0269DD8E20F116FE00C65F9F /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD8D20F116FE00C65F9F /* TableViewModel.swift */; };
+		0269DD9020F118A800C65F9F /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD8F20F118A800C65F9F /* TableViewCellViewModel.swift */; };
+		0269DD9620F12E2D00C65F9F /* DetailedNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269DD9520F12E2D00C65F9F /* DetailedNewsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0239D60C20EE83BF00ED5D67 /* Tinkoff News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0239D60F20EE83BF00ED5D67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0239D61120EE83BF00ED5D67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0239D61120EE83BF00ED5D67 /* DetailedNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsViewController.swift; sourceTree = "<group>"; };
 		0239D61420EE83BF00ED5D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0239D61720EE83BF00ED5D67 /* Tinkoff_News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tinkoff_News.xcdatamodel; sourceTree = "<group>"; };
 		0239D61920EE83C100ED5D67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,8 +45,15 @@
 		0239D63120EF728500ED5D67 /* StorableContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableContext.swift; sourceTree = "<group>"; };
 		0239D63320EF758600ED5D67 /* CoreDataStorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageContext.swift; sourceTree = "<group>"; };
 		0239D63520EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoraDataStorageContextOperations.swift; sourceTree = "<group>"; };
-		0269DD7720EF876800C65F9F /* NewsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsJSON.swift; sourceTree = "<group>"; };
+		0269DD7720EF876800C65F9F /* FullNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNews.swift; sourceTree = "<group>"; };
 		0269DD7F20F0B46C00C65F9F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		0269DD8220F0FE5B00C65F9F /* DetailedNewsViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsViewModelType.swift; sourceTree = "<group>"; };
+		0269DD8420F0FE9700C65F9F /* TableViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModelType.swift; sourceTree = "<group>"; };
+		0269DD8620F0FED100C65F9F /* TableViewCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelType.swift; sourceTree = "<group>"; };
+		0269DD8A20F1007000C65F9F /* ObjectOfNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOfNews.swift; sourceTree = "<group>"; };
+		0269DD8D20F116FE00C65F9F /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		0269DD8F20F118A800C65F9F /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
+		0269DD9520F12E2D00C65F9F /* DetailedNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,15 +86,15 @@
 		0239D60E20EE83BF00ED5D67 /* Tinkoff News */ = {
 			isa = PBXGroup;
 			children = (
+				0239D61E20EE83C100ED5D67 /* Info.plist */,
 				0269DD7D20EF9B2E00C65F9F /* Supporting Files */,
 				0239D62D20EF710400ED5D67 /* DBLayer */,
-				0239D61120EE83BF00ED5D67 /* ViewController.swift */,
 				0239D61320EE83BF00ED5D67 /* Main.storyboard */,
-				0239D61E20EE83C100ED5D67 /* Info.plist */,
 				0239D61620EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld */,
-				0239D62820EF659400ED5D67 /* NewsTableViewController.swift */,
-				0239D62A20EF65C600ED5D67 /* NewsViewTableViewCell.swift */,
-				0269DD7720EF876800C65F9F /* NewsJSON.swift */,
+				0269DD9220F119E700C65F9F /* NetwokrLayer */,
+				0269DD8820F0FEF500C65F9F /* Protocols */,
+				0269DD9120F118B000C65F9F /* ViewModels */,
+				0269DD8920F0FF4400C65F9F /* Views */,
 			);
 			path = "Tinkoff News";
 			sourceTree = "<group>";
@@ -121,6 +135,53 @@
 				0269DD7F20F0B46C00C65F9F /* News.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		0269DD8820F0FEF500C65F9F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0269DD8420F0FE9700C65F9F /* TableViewModelType.swift */,
+				0269DD8620F0FED100C65F9F /* TableViewCellViewModelType.swift */,
+				0269DD8220F0FE5B00C65F9F /* DetailedNewsViewModelType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0269DD8920F0FF4400C65F9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0239D62820EF659400ED5D67 /* NewsTableViewController.swift */,
+				0239D62A20EF65C600ED5D67 /* NewsViewTableViewCell.swift */,
+				0239D61120EE83BF00ED5D67 /* DetailedNewsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0269DD8C20F105F900C65F9F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0269DD7720EF876800C65F9F /* FullNews.swift */,
+				0269DD8A20F1007000C65F9F /* ObjectOfNews.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0269DD9120F118B000C65F9F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0269DD8D20F116FE00C65F9F /* TableViewModel.swift */,
+				0269DD8F20F118A800C65F9F /* TableViewCellViewModel.swift */,
+				0269DD9520F12E2D00C65F9F /* DetailedNewsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0269DD9220F119E700C65F9F /* NetwokrLayer */ = {
+			isa = PBXGroup;
+			children = (
+				0269DD8C20F105F900C65F9F /* Models */,
+			);
+			path = NetwokrLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,16 +255,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0269DD8720F0FED100C65F9F /* TableViewCellViewModelType.swift in Sources */,
+				0269DD8B20F1007000C65F9F /* ObjectOfNews.swift in Sources */,
 				0239D62B20EF65C600ED5D67 /* NewsViewTableViewCell.swift in Sources */,
+				0269DD8E20F116FE00C65F9F /* TableViewModel.swift in Sources */,
 				0239D63420EF758600ED5D67 /* CoreDataStorageContext.swift in Sources */,
-				0239D61220EE83BF00ED5D67 /* ViewController.swift in Sources */,
+				0269DD8320F0FE5B00C65F9F /* DetailedNewsViewModelType.swift in Sources */,
+				0239D61220EE83BF00ED5D67 /* DetailedNewsViewController.swift in Sources */,
 				0239D63620EF78AC00ED5D67 /* CoraDataStorageContextOperations.swift in Sources */,
 				0239D62920EF659400ED5D67 /* NewsTableViewController.swift in Sources */,
+				0269DD9620F12E2D00C65F9F /* DetailedNewsViewModel.swift in Sources */,
 				0239D63220EF728500ED5D67 /* StorableContext.swift in Sources */,
+				0269DD9020F118A800C65F9F /* TableViewCellViewModel.swift in Sources */,
 				0269DD8020F0B46C00C65F9F /* News.swift in Sources */,
 				0239D63020EF722300ED5D67 /* Storable.swift in Sources */,
 				0239D61020EE83BF00ED5D67 /* AppDelegate.swift in Sources */,
-				0269DD7820EF876800C65F9F /* NewsJSON.swift in Sources */,
+				0269DD8520F0FE9700C65F9F /* TableViewModelType.swift in Sources */,
+				0269DD7820EF876800C65F9F /* FullNews.swift in Sources */,
 				0239D61820EE83BF00ED5D67 /* Tinkoff_News.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,19 +12,19 @@ import CoreData
 
 extension CoreDataStorageContext {
     func add(object: Storable) {
-        if let obj = (object) as? NewsJSON {
+        if let obj = (object) as? FullNews {
             addNews(object: obj)
         }
         self.saveData()
     }
     
-    func addNews(object: NewsJSON){
+    func addNews(object: FullNews){
         let news = News(context: self.context)
-//        news.id = object.id
-//        news.title = object.title
-//        news.createdTime = object.createdTime
-//        news.updatedTime = object.updateTime
-//        news.urlSlug = object.slug
+        news.id = object.id
+        news.title = object.title
+        news.createdTime = object.createdTime
+        news.updatedTime = object.updatedTime
+        news.urlSlug = object.slug
         news.counter = 1
         
     }

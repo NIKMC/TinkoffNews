@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct NewsJSON : Decodable {
-    var response: Response
+struct Response : Decodable {
+    var response: FullNews
 }
 
-struct Response: Decodable {
+struct FullNews: Decodable {
     var id: String
     var title: String
     var text: String
@@ -28,3 +28,4 @@ struct Response: Decodable {
 //    var disclaimer: String?
     
 }
+
