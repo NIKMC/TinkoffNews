@@ -10,20 +10,47 @@ import Foundation
 
 class DetailedNewsViewModel: DetailedNewsViewModelType {
     
-    private var shortNews: ShortNews
-    var title: String {
-        return ""
+//    private var shortNews: ShortNews
+    
+    private var networkManagerOfArticle: ArticleManager
+    
+    var fullNews: FullNews?
+    private var storage: StorableContext
+    private var news: News?
+    private var urlSlug: String {
+        didSet {
+            
+        }
     }
     
-    var date: String {
-        return ""
+    var title: Box<String?> = Box(nil)
+    
+    var date: Box<String?> = Box(nil)
+    
+    var text: Box<String?> = Box(nil)
+    
+    init(urlSlug: String, storableContext storage: StorableContext) {
+        self.urlSlug = urlSlug
+        self.storage = storage
+        self.networkManagerOfArticle = ArticleManager()
     }
     
-    var text: String {
-        return ""
+    func performUpdate(completion: @escaping (FullNews)->()) {
+        getArticle(urlSlug: self.urlSlug) { (result) in
+            completion(result)
+        }
     }
     
-    func getArticle(toUrlSlug urlSlug: String, completion: @escaping (FullNews) -> ()) {
+    func getArticle(urlSlug url: String, completion: @escaping (FullNews) -> ()) {
+        print("URLSLUG IS \(url)")
+        networkManagerOfArticle.sendRequest(urlSlug: url)
+        
+        networkManagerOfArticle.success = { result in
+//            self?.storage.add(object: result)
+            let fullNews = FullNews(fromJson: result)
+            completion(fullNews)
+        }
+        
         
     }
     
@@ -31,9 +58,10 @@ class DetailedNewsViewModel: DetailedNewsViewModelType {
         
     }
     
-    init(news shortNews: ShortNews) {
-        self.shortNews = shortNews
+    func fetchNews() {
+        
     }
+    
     
     //MARK: parse string datetime to good datetime
     

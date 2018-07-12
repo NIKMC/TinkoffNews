@@ -17,60 +17,34 @@ class NewsTableViewController: UITableViewController {
 //    let pageSize = 20
 //    let totalSize = 100
     
+    @IBOutlet weak var indicatorOfBottomPaging: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
-//        storage = CoreDataStorageContext()
         
-        
-        self.refreshControl?.addTarget(self, action: #selector(loadNews), for: .valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         self.refreshControl?.tintColor = UIColor.black
         self.refreshControl?.attributedTitle = NSAttributedString(string: "Upload News...")
+        
+        self.indicatorOfBottomPaging.isHidden = true
+        
         
     }
     
     @IBOutlet var viewModel: TableViewModel!
     
-
-    //MARK: - Loading first data
-    
-    @objc func loadNews() {
-//        let globalUrlString = "https://cfg.tinkoff.ru/news/public/api/platform/v1/getArticles"
-//        let params: [String:String] = ["pageOffset" : String(describing: pageOffset), "pageSize" : String(describing: pageSize)]
-//        createRequest(toUrlString: globalUrlString, params: params)
-        
-    }
-    
-    func createRequest(toUrlString urlString: String, params: [String:String]) {
-        let urlComp = NSURLComponents(string: urlString)!
-        
-        urlComp.queryItems = params.map { (key, value) in
-            URLQueryItem(name: key, value: value)
-        }
-        
-        URLSession.shared.dataTask(with: urlComp.url!) { [unowned self](data, response, error) in
-            guard let data = data else { return }
-            print("The data: \(data)")
-            print("The responce: \(String(describing: response))")
-            do {
-                let resp = try JSONDecoder().decode(ObjectOfNews.self, from: data)
-                print("The response is: \(String(describing: resp.response.news.first))")
-                DispatchQueue.main.async {
-                    self.refreshControl?.endRefreshing()
-                }
-                
-//                self.tableView.reloadData()
-            } catch let error {
-                print("Error of parsing \(error)")
+    @objc func pullToRefresh() {
+        viewModel.pullToRefresh { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
             }
-            
-            }.resume()
+        }
     }
-    
-
+  
     // MARK: - Table view data source
 
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -98,13 +72,26 @@ class NewsTableViewController: UITableViewController {
         
         let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
         tableViewCell.viewModel = cellViewModel
+        
+        viewModel.pagingNews(atIndexPath: indexPath, startAnimation: { [weak self] in
+            DispatchQueue.main.async {
+                self?.indicatorOfBottomPaging.isHidden = false
+                self?.indicatorOfBottomPaging.startAnimating()
+            }
+        }) { [weak self] in
+            DispatchQueue.main.async {
+                self?.indicatorOfBottomPaging.isHidden = true
+                self?.indicatorOfBottomPaging.stopAnimating()
+                self?.tableView.reloadData()
+            }
+        }
         return tableViewCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
         viewModel.selectRow(atIndexPath: indexPath)
-        
+
         performSegue(withIdentifier: "goToDetailedNews", sender: nil)
     }
     
@@ -112,7 +99,8 @@ class NewsTableViewController: UITableViewController {
         guard let identifier = segue.identifier, let viewModel = viewModel else { return }
         if identifier == "goToDetailedNews" {
             if let dvc = segue.destination as? DetailedNewsViewController {
-                print("\(viewModel.viewModelForSelectedRow()?.title)")
+                print("\(String(describing:  viewModel.viewModelForSelectedRow()?.title))")
+                dvc.viewModel = viewModel.viewModelForSelectedRow()
             }
         }
     }

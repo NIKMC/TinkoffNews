@@ -9,10 +9,10 @@
 import Foundation
 
 struct Response : Decodable {
-    var response: FullNews
+    var response: FullNewsJson
 }
 
-struct FullNews: Decodable {
+struct FullNewsJson: Decodable {
     var id: String
     var title: String
     var text: String

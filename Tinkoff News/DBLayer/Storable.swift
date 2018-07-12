@@ -14,6 +14,4 @@ protocol Storable {
 
 extension NSManagedObject: Storable {}
 
-//extension FullNews: Storable{
-//
-//}
+extension FullNewsJson: Storable{}

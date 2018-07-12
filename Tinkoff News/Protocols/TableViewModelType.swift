@@ -12,7 +12,6 @@ protocol TableViewModelType {
     
     var pageOffSet: Int { get}
     var pageSize: Int { get }
-    var totalSize: Int { get }
     
     func numberOfRowsInSection() -> Int
     
@@ -21,4 +20,12 @@ protocol TableViewModelType {
     func viewModelForSelectedRow() -> DetailedNewsViewModelType?
     
     func selectRow(atIndexPath indexPath: IndexPath)
+    
+    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: @escaping()->(), completion: @escaping ()->())
+    
+    func getNews(set: Int, size: Int, completion: @escaping ([ShortNews])->())
+    
+    func pullToRefresh(completion: @escaping ()->())
+    
+    func fetchListOfNews() 
 }

@@ -20,7 +20,12 @@ protocol StorableContext {
     func delete(object: Storable)
     
     //MARK: fetch an objects
-    func fetch(object: News.Type, predicate:NSPredicate?, sorted: NSSortDescriptor?, completion:(([News])->()))
     
+    func fetchNews(predicate: NSPredicate?, sorted: [NSSortDescriptor]?, completion: (([News]?) -> ()))
     
+     func fetchArticles(predicate: NSPredicate?, sorted: NSSortDescriptor?, completion: (([News?]) -> ()))
+    
+    func findAndUpdateNews(urlSlug: String) -> News?
+    //    func fetch<T:Storable>(object: T, predicate: NSPredicate?, sorted: NSSortDescriptor?, completion: ((T)->()))
+//
 }

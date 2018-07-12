@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class CoreDataStorageContext: StorableContext {
-   
+    
     var context : NSManagedObjectContext
     
     required init() {
