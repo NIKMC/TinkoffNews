@@ -10,7 +10,7 @@ import Foundation
 
 class ArticleManager {
     
-//    private var request: NewsRequest?
+    //    private var request: NewsRequest?
     private var service: BackendService
     public var success: ((FullNewsJson)->())?
     public var failure: ((NSError)->())?
@@ -25,10 +25,10 @@ class ArticleManager {
     }
     
     private func handleSuccess(_ response: Data) {
-        print("The data of getArticle: \(String(describing: response))")
+//        print("The data of getArticle: \(String(describing: response))")
         do {
             let data = try JSONDecoder().decode(Response.self, from: response)
-            print("The response is: \(String(describing: data.response))")
+//            print("The response is: \(String(describing: data.response))")
             success?(data.response)
         } catch let error {
             print("Error of parsing \(error)")

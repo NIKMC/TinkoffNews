@@ -59,7 +59,7 @@ extension CoreDataStorageContext {
 //MARK: Extensions to fetch of data in CoreData
 extension CoreDataStorageContext {
     
-    func fetchNews(predicate: NSPredicate?, sorted: [NSSortDescriptor]?, completion: (([News]?) -> ())) {
+    func fetchArticles(predicate: NSPredicate?, sorted: [NSSortDescriptor]?, completion: (([News]?) -> ())) {
         let request: NSFetchRequest<News> = News.fetchRequest()
         if predicate != nil {
             request.predicate = predicate
@@ -76,23 +76,23 @@ extension CoreDataStorageContext {
         
     }
     
-    func fetchArticles(predicate: NSPredicate?, sorted: NSSortDescriptor?, completion: (([News?]) -> ())) {
-        
-        let request: NSFetchRequest<News> = News.fetchRequest()
-        if predicate != nil {
-            request.predicate = predicate
-        }
-        //TODO: Xто делать если количество закешированных данных >20 выгружать сразу все из кеша или делать подгрузку?
-        request.sortDescriptors = [NSSortDescriptor(key: "createdTime", ascending: false)]
-        do {
-            let matches = try self.context.fetch(request)
-            if matches.count > 0 {
-                completion(matches)
-            }
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
+//    func fetchNews(predicate: NSPredicate?, sorted: NSSortDescriptor?, completion: (([News]?) -> ())) {
+//        
+//        let request: NSFetchRequest<News> = News.fetchRequest()
+//        if predicate != nil {
+//            request.predicate = predicate
+//        }
+//        //TODO: Xто делать если количество закешированных данных >20 выгружать сразу все из кеша или делать подгрузку?
+//        request.sortDescriptors = [NSSortDescriptor(key: "createdTime", ascending: false)]
+//        do {
+//            let matches = try self.context.fetch(request)
+//            if matches.count > 0 {
+//                completion(matches)
+//            }
+//        } catch {
+//            print("Error fetching data from context \(error)")
+//        }
+//    }
     
     func findAndUpdateNews(urlSlug: String) -> News? {
         let request: NSFetchRequest<News> = News.fetchRequest()
@@ -113,18 +113,26 @@ extension CoreDataStorageContext {
         return nil
     }
     
-//    func fetch<T:Storable>(object: T, predicate: NSPredicate?, sorted: [NSSortDescriptor]?, completion: ((T?)->()?)) {
-//
-//        var request: NSFetchRequest<NSFetchRequestResult>?
-//        switch object {
-//        case is News:
-//            request = News.fetchRequest()
-//            let news = findAndUpdateNews(fromRequest: request as! NSFetchRequest<News>, predicate: predicate)
+    func fetch(object: FullNewsJson, completion: ((News)->())) {
+        let news = try? News.findOrCreateNews(matching: object, in: context)
+        if let news = news {
+            self.saveData()
+            completion(news)
+        }
+    }
+    
+    //    func fetch<T:Storable>(object: T, predicate: NSPredicate?, sorted: [NSSortDescriptor]?, completion: ((T?)->()?)) {
+    //
+    //        var request: NSFetchRequest<NSFetchRequestResult>?
+    //        switch object {
+    //        case is News:
+    //            request = News.fetchRequest()
+    //            let news = findAndUpdateNews(fromRequest: request as! NSFetchRequest<News>, predicate: predicate)
     //            completion(news as! T) //I don't have idea how to transfer and make function more general
-//        default:
-//            break
-//        }
-//    }
+    //        default:
+    //            break
+    //        }
+    //    }
     
     
 }

@@ -31,7 +31,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр Разработки в Сочи" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8p-SZ-WTA">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8p-SZ-WTA">
                                             <rect key="frame" x="16" y="10" width="300" height="59.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,9 +127,9 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKJ-hL-X7F" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="981.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="367.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр Разработки в Сочи" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15M-Ve-wv1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tinkoff News Title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15M-Ve-wv1">
                                                 <rect key="frame" x="16" y="20" width="343" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="dWb-Ll-pCp"/>
@@ -141,15 +141,14 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tinkoff" translatesAutoresizingMaskIntoConstraints="NO" id="4EM-fe-9oY">
                                                 <rect key="frame" x="16" y="94" width="343" height="183"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRM-eU-co4">
-                                                <rect key="frame" x="16" y="297" width="343" height="634"/>
-                                                <string key="text"> Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи   Разработки в Сочи Тинькофф Банк вместе с фондом «Талант и Успех» займутся развитием инноваций и откроют Центр  Разработки в Сочи  </string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" text="Tinkoff News Text" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRM-eU-co4">
+                                                <rect key="frame" x="16" y="297" width="343" height="20"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Published: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHS-qU-UN8">
-                                                <rect key="frame" x="16" y="941" width="343" height="20.5"/>
+                                                <rect key="frame" x="16" y="327" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

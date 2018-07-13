@@ -14,7 +14,7 @@ class DetailedNewsViewModel: DetailedNewsViewModelType {
     
     private var networkManagerOfArticle: ArticleManager
     
-    var fullNews: FullNews?
+//    var fullNews: News?
     private var storage: StorableContext
     private var news: News?
     private var urlSlug: String {
@@ -29,39 +29,48 @@ class DetailedNewsViewModel: DetailedNewsViewModelType {
     
     var text: Box<String?> = Box(nil)
     
-    init(urlSlug: String, storableContext storage: StorableContext) {
-        self.urlSlug = urlSlug
-        self.storage = storage
+    init(urlSlug: String) {
+        self.storage = CoreDataStorageContext()
         self.networkManagerOfArticle = ArticleManager()
+        self.urlSlug = urlSlug
+        
     }
     
-    func performUpdate(completion: @escaping (FullNews)->()) {
+    func performUpdate(completion: @escaping (News)->()) {
+        print("performUpdate")
         getArticle(urlSlug: self.urlSlug) { (result) in
             completion(result)
         }
     }
     
-    func getArticle(urlSlug url: String, completion: @escaping (FullNews) -> ()) {
+    func getArticle(urlSlug url: String, completion: @escaping (News) -> ()) {
         print("URLSLUG IS \(url)")
+        print("fetchArticle")
+        
+        fetchArticle(toUrlSlag: self.urlSlug) { (result) in
+            print("fetchArticle completion \(result.title!)")
+            completion(result)
+        }
+        print("networkManagerOfArticle.sendRequest")
+        
         networkManagerOfArticle.sendRequest(urlSlug: url)
         
-        networkManagerOfArticle.success = { result in
-//            self?.storage.add(object: result)
-            let fullNews = FullNews(fromJson: result)
-            completion(fullNews)
+        networkManagerOfArticle.success = { [weak self] result in
+            print("networkManagerOfArticle.success")
+            self?.storage.fetch(object: result, completion: { (news) in
+                print("storage.fetch completion \(news.title!)")
+                completion(news)
+            })
         }
-        
-        
     }
     
     func fetchArticle(toUrlSlag urlSlug: String, completion: @escaping (News) -> ()) {
-        
+        storage.fetchArticles(predicate: NSPredicate(format: "urlSlug = %@", urlSlug), sorted: nil) { (articles) in
+            guard let article = articles?.first else { return }
+            completion(article)
+        }
     }
-    
-    func fetchNews() {
-        
-    }
-    
+  
     
     //MARK: parse string datetime to good datetime
     

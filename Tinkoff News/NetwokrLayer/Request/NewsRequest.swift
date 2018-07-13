@@ -32,7 +32,7 @@ struct NewsRequest: BackedAPIRequest {
     
     var parameters: [String : String]? {
         var params = [String: String]()
-        params["pageOffset"] = String(describing: pageSize)
+        params["pageOffset"] = String(describing: pageOffSet)
         params["pageSize"] = String(describing: pageSize)
         return params
     }

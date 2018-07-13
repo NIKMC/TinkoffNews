@@ -10,7 +10,7 @@ import Foundation
 
 class NewsManager: NSObject {
     
-//    private var request: NewsRequest?
+    //    private var request: NewsRequest?
     private var service: BackendService?
     public var success: (([ShortNewsJson]?)->())?
     public var failure: ((NSError)->())?
@@ -23,10 +23,10 @@ class NewsManager: NSObject {
     }
     
     private func handleSuccess(_ response: Data) {
-        print("The data of getArticles: \(String(describing: response))")
+//        print("The data of getArticles: \(String(describing: response))")
         do {
             let resp = try JSONDecoder().decode(ObjectOfNews.self, from: response)
-            print("The response is: \(String(describing: resp.response.news?.first))")
+//            print("The response is: \(String(describing: resp.response.news?.first))")
             success?(resp.response.news)
         } catch let error {
             print("Error of parsing \(error)")
@@ -35,7 +35,7 @@ class NewsManager: NSObject {
     }
     
     private func handleFailure(_ error: NSError) {
-       self.failure?(error)
+        self.failure?(error)
     }
     
 }

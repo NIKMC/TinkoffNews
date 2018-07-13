@@ -24,10 +24,12 @@ class TableViewModel: NSObject, TableViewModelType {
     var pageOffSet: Int
     
     func getNews(set: Int, size: Int, completion: @escaping ([ShortNews])->()) {
+        
         networkManagerOfNews.sendRequest(pageOffSet: set, pageSize: size)
         
         networkManagerOfNews.success = { [weak self] response in
             if let data = response {
+                
                 self?.pageOffSet += data.count
                 // TODO: Скорее всего результат из сети проверять на наличие в СoreData а затем вставлять
                 
@@ -45,10 +47,9 @@ class TableViewModel: NSObject, TableViewModelType {
         self.pageOffSet = DEFAULT_SET
         news?.removeAll()
         getNews(set: pageOffSet, size: pageSize) { [weak self] result in
-            self?.news = result
+            self?.news?.append(contentsOf: result)
             completion()
         }
-        
     }
     
     func numberOfRowsInSection() -> Int {
@@ -56,7 +57,7 @@ class TableViewModel: NSObject, TableViewModelType {
     }
     
     func cellViewModel(forIndexPath indexPath: IndexPath) -> TableViewCellViewModelType? {
-        guard let news = news else { return nil}
+        guard let news = news else { return nil }
         let shortNews = news[indexPath.row]
         return TableViewCellViewModel(news: shortNews)
     }
@@ -64,7 +65,7 @@ class TableViewModel: NSObject, TableViewModelType {
     func viewModelForSelectedRow() -> DetailedNewsViewModelType? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         //TODO: I'm not sure
-        return DetailedNewsViewModel(urlSlug: news![selectedIndexPath.row].slug, storableContext: storage)
+        return DetailedNewsViewModel(urlSlug: news![selectedIndexPath.row].slug)
     }
     
     func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: @escaping()->(), completion: @escaping ()->()) {
@@ -82,15 +83,16 @@ class TableViewModel: NSObject, TableViewModelType {
         self.selectedIndexPath = indexPath
     }
     
-//    func fetchNews() {
-//        let sortDescriptor = NSSortDescriptor
-//        storage.fetch(object: News.self, predicate: <#T##NSPredicate?#>, sorted: <#T##NSSortDescriptor?#>, completion: <#T##(([News]) -> ())##(([News]) -> ())##([News]) -> ()#>)
-//    }
+    //    func fetchNews() {
+    //        let sortDescriptor = NSSortDescriptor
+    //        storage.fetch(object: News.self, predicate: <#T##NSPredicate?#>, sorted: <#T##NSSortDescriptor?#>, completion: <#T##(([News]) -> ())##(([News]) -> ())##([News]) -> ()#>)
+    //    }
     
     override init() {
         self.storage = CoreDataStorageContext()
         self.pageSize = DEFAULT_SIZE
         self.pageOffSet = DEFAULT_SET
+        self.news = [ShortNews]()
     }
     
 }

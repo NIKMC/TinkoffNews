@@ -13,15 +13,14 @@ protocol DetailedNewsViewModelType {
     var date: Box<String?> { get }
     var text: Box<String?> { get }
     
-    func performUpdate(completion: @escaping (FullNews)->())
+    func performUpdate(completion: @escaping (News)->())
     
-    func getArticle(urlSlug url: String, completion: @escaping (FullNews)->())
+    func getArticle(urlSlug url: String, completion: @escaping (News)->())
     
     func fetchArticle(toUrlSlag urlSlug: String, completion: @escaping (News)->())
     
     func parseHtmlText(fromHtmlText text: String) -> String
     
     func parseDateTimeString(oddDateTime: String) -> String
-    
-    func fetchNews()
+
 }
