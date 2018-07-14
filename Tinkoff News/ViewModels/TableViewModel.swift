@@ -23,33 +23,54 @@ class TableViewModel: NSObject, TableViewModelType {
     var pageSize: Int
     var pageOffSet: Int
     
-    func getNews(set: Int, size: Int, completion: @escaping ([ShortNews])->()) {
+    func getNews(set: Int, size: Int, completion: (([ShortNews])->())?, errorHandle: ((NSError)->())?) {
         
         networkManagerOfNews.sendRequest(pageOffSet: set, pageSize: size)
         
         networkManagerOfNews.success = { [weak self] response in
             if let data = response {
-                
                 self?.pageOffSet += data.count
-                // TODO: Скорее всего результат из сети проверять на наличие в СoreData а затем вставлять
                 
-                let news = data.map{ ShortNews(fromJson: $0) }
-                completion(news)
+                self?.storage.fetchNews(objects: data, completion: { (news) in
+                    completion?(news)
+                })
             }
-            
         }
-    }
-    func fetchListOfNews() {
+        
+        networkManagerOfNews.failure = { (error) in
+            print("the error domain is \(error.domain)")
+            print("the error code is \(error.code)")
+            print("the error localizedDescription is \(error.localizedDescription)")
+            errorHandle?(error)
+        }
         
     }
-    
-    func pullToRefresh(completion: @escaping ()->()) {
-        self.pageOffSet = DEFAULT_SET
-        news?.removeAll()
-        getNews(set: pageOffSet, size: pageSize) { [weak self] result in
-            self?.news?.append(contentsOf: result)
-            completion()
+    func fetchListOfNews(completion: @escaping()->()) {
+        storage.fetchArticles(predicate: nil, sorted: [NSSortDescriptor(key: "createdTime", ascending: false)]) { [weak self](results) in
+            guard let data = results else { return }
+            let news = data.map{ ShortNews(fromCoreData: $0) }
+            self?.news?.append(contentsOf: news)
         }
+    }
+    
+    func loadToRefresh(completion: (()->())?, errorHandle: ((String)->())?) {
+        self.pageOffSet = DEFAULT_SET
+        getNews(set: pageOffSet, size: pageSize, completion: { [weak self] result in
+            self?.news?.removeAll()
+            self?.news?.append(contentsOf: result)
+            completion?()
+            }, errorHandle: { (error) in
+                let errorInfo = (error.domain, error.code)
+                switch errorInfo {
+                //TODO: Lобавить больше типов для обработки ошибок
+                case (NSURLErrorDomain, NSURLErrorNotConnectedToInternet):
+                    errorHandle?("Подключение к Интернет отсутствует. Невозможно обновить новости")
+                case (NSURLErrorDomain, NSURLErrorTimedOut):
+                    errorHandle?("Время выполнения запросы на обновление новостей истекло")
+                default:
+                    errorHandle?("Ошибка выполнения запроса на сервере. Попробуйте позже.")
+                }
+        })
     }
     
     func numberOfRowsInSection() -> Int {
@@ -65,28 +86,36 @@ class TableViewModel: NSObject, TableViewModelType {
     func viewModelForSelectedRow() -> DetailedNewsViewModelType? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         //TODO: I'm not sure
-        return DetailedNewsViewModel(urlSlug: news![selectedIndexPath.row].slug)
+        return DetailedNewsViewModel(news: news![selectedIndexPath.row])
     }
     
-    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: @escaping()->(), completion: @escaping ()->()) {
+    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: @escaping()->(), completion: (()->())?, errorHandle: ((String)->())?) {
         guard let news = news else { return }
+        //TODO: Проверить логику на наличие кешированных данных, если pageOffSet = default тогда не делаем пагинацию иначе делаем
+        guard pageOffSet != DEFAULT_SET else { return }
         if indexPath.row == news.count - 1 {
             startAnimation()
-            getNews(set: pageOffSet, size: pageSize) { [weak self] result in
+            getNews(set: pageOffSet, size: pageSize, completion:  { [weak self] result in
                 self?.news?.append(contentsOf: result)
-                completion()
-            }
+                completion?()
+                }, errorHandle: { (error) in
+                    let errorInfo = (error.domain, error.code)
+                    switch errorInfo {
+                    //TODO: Lобавить больше типов для обработки ошибок
+                    case (NSURLErrorDomain, NSURLErrorNotConnectedToInternet):
+                        errorHandle?("Подключение к Интернет отсутствует. Невозможно подгрузить новости.")
+                    case (NSURLErrorDomain, NSURLErrorTimedOut):
+                        errorHandle?("Время выполнения запроса подгрузки новостей истекло")
+                    default:
+                        errorHandle?("Ошибка выполнения запроса на сервере. Попробуйте позже.")
+                    }
+            })
         }
     }
     
     func selectRow(atIndexPath indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
     }
-    
-    //    func fetchNews() {
-    //        let sortDescriptor = NSSortDescriptor
-    //        storage.fetch(object: News.self, predicate: <#T##NSPredicate?#>, sorted: <#T##NSSortDescriptor?#>, completion: <#T##(([News]) -> ())##(([News]) -> ())##([News]) -> ()#>)
-    //    }
     
     override init() {
         self.storage = CoreDataStorageContext()

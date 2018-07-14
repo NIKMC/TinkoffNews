@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailedNewsViewController: UIViewController {
-
+    
     
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
@@ -20,36 +20,53 @@ class DetailedNewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        guard let viewModel = viewModel else { return }
+        viewModel.performUpdate(completion: { [unowned self] (news) in
+            DispatchQueue.main.async {
+                print("The time is \(String(describing: news.createdTime))")
+                self.viewModel?.titleBox.value = news.title
+                self.viewModel?.textBox.value = news.text
+                self.viewModel?.publishedDateBox.value = news.createdTime
+            }
+            }, errorHandle: { [weak self] (error) in
+                DispatchQueue.main.async {
+                    let ac = UIAlertController(title: "Ошибка!", message: error, preferredStyle: .alert)
+                    
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+                    ac.addAction(cancelAction)
+                    self?.present(ac, animated: true)
+                }
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        //FIXME: Change on the News or something else instead of use this two parameters
-        viewModel?.title.bind { [unowned self] in
+        guard let viewModel = viewModel else { return }
+        self.titleLabel.text = viewModel.title.htmlToString
+        
+        viewModel.titleBox.bind{ [unowned self] in
             guard let title = $0 else { return }
-            self.titleLabel.text = title
+            self.titleLabel.text = title.htmlToString
         }
-        
-        viewModel?.text.bind { [unowned self] in
+        viewModel.textBox.bind{ [unowned self] in
             guard let text = $0 else { return }
-            self.textLabel.text = text
+            self.textLabel.text = text.htmlToString
+        }
+        viewModel.publishedDateBox.bind{ [unowned self] in
+            guard let dateTime = $0 else { return }
+            let publishedDate = Utility.parseDateTimeString(oddDateTime: dateTime)
+            self.dateTimeLabel.text = "Published: \(String(describing: publishedDate))"
         }
         
-        viewModel?.date.bind { [unowned self] in
-            guard let date = $0 else { return }
-            self.dateTimeLabel.text = "Published: \(date)"
-        }
-        
-        viewModel?.performUpdate(completion: { [weak self] (news) in
-            DispatchQueue.main.async {
-                self?.viewModel?.title.value = self?.viewModel?.parseHtmlText(fromHtmlText: news.title!)
-                self?.viewModel?.text.value = self?.viewModel?.parseHtmlText(fromHtmlText: news.text!)
-                self?.viewModel?.date.value = self?.viewModel?.parseDateTimeString(oddDateTime: news.createdTime!)
-            }
+        viewModel.performLoad(completion: { [unowned self] (news) in
+            self.viewModel?.titleBox.value = news.title
+            self.viewModel?.textBox.value = news.text
+            self.viewModel?.publishedDateBox.value = news.createdTime
         })
         
     }
-  
+    
 }

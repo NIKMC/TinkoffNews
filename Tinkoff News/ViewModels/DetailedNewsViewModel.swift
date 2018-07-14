@@ -10,57 +10,68 @@ import Foundation
 
 class DetailedNewsViewModel: DetailedNewsViewModelType {
     
-//    private var shortNews: ShortNews
-    
     private var networkManagerOfArticle: ArticleManager
     
-//    var fullNews: News?
     private var storage: StorableContext
-    private var news: News?
-    private var urlSlug: String {
-        didSet {
-            
-        }
+    
+    var title: String {
+        return news.title
     }
     
-    var title: Box<String?> = Box(nil)
+    private var news: ShortNews
     
-    var date: Box<String?> = Box(nil)
+    var titleBox: Box<String?> = Box(nil)
+    var textBox: Box<String?> = Box(nil)
+    var publishedDateBox: Box<String?> = Box(nil)
     
-    var text: Box<String?> = Box(nil)
-    
-    init(urlSlug: String) {
+    init(news: ShortNews) {
         self.storage = CoreDataStorageContext()
         self.networkManagerOfArticle = ArticleManager()
-        self.urlSlug = urlSlug
+        self.news = news
         
     }
     
-    func performUpdate(completion: @escaping (News)->()) {
+    func performLoad(completion: @escaping (News)->()) {
+        fetchArticle(toUrlSlag: self.news.slug) { (result) in
+            print("fetchArticle completion \(result.createdTime!)")
+            completion(result)
+        }
+    }
+    
+    func performUpdate(completion: ((News)->())?, errorHandle: ((String)->())?) {
         print("performUpdate")
-        getArticle(urlSlug: self.urlSlug) { (result) in
-            completion(result)
-        }
+        
+        getArticle(urlSlug: self.news.slug, completion: { (result) in
+            print("performUpdate \(result.createdTime!)")
+            completion?(result)
+        }, errorHandle: { (error) in
+            let errorInfo = (error.domain, error.code)
+            switch errorInfo {
+            //TODO: Lобавить больше типов для обработки ошибок
+            case (NSURLErrorDomain, NSURLErrorNotConnectedToInternet):
+                errorHandle?("Подключение к Интернет отсутствует")
+            case (NSURLErrorDomain, NSURLErrorTimedOut):
+                errorHandle?("Время выполнения запросы истекло")
+            default:
+                errorHandle?("Ошибка выполнения запроса на сервере. Попробуйте позже.")
+            }
+        })
     }
     
-    func getArticle(urlSlug url: String, completion: @escaping (News) -> ()) {
-        print("URLSLUG IS \(url)")
-        print("fetchArticle")
-        
-        fetchArticle(toUrlSlag: self.urlSlug) { (result) in
-            print("fetchArticle completion \(result.title!)")
-            completion(result)
-        }
-        print("networkManagerOfArticle.sendRequest")
-        
+    func getArticle(urlSlug url: String, completion: ((News) -> ())?, errorHandle: ((NSError)->())?) {
         networkManagerOfArticle.sendRequest(urlSlug: url)
         
         networkManagerOfArticle.success = { [weak self] result in
-            print("networkManagerOfArticle.success")
             self?.storage.fetch(object: result, completion: { (news) in
-                print("storage.fetch completion \(news.title!)")
-                completion(news)
+                completion?(news)
             })
+        }
+        
+        networkManagerOfArticle.failure = { (error) in
+            print("the error domain is \(error.domain)")
+            print("the error code is \(error.code)")
+            print("the error localizedDescription is \(error.localizedDescription)")
+            errorHandle?(error)
         }
     }
     
@@ -70,53 +81,6 @@ class DetailedNewsViewModel: DetailedNewsViewModelType {
             completion(article)
         }
     }
-  
     
-    //MARK: parse string datetime to good datetime
-    
-    func parseDateTimeString(oddDateTime: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        guard let date = dateFormatter.date(from: oddDateTime) else {
-            fatalError("ERROR: Date conversion failed due to mismatched format.")
-        }
-        let dateFormatterString = DateFormatter()
-        dateFormatterString.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let createDate = dateFormatterString.string(from: date)
-        return createDate
-        
-    }
-    
-    //MARK: parse html text to common text
-    
-    func parseHtmlText(fromHtmlText text: String) -> String {
-        let convertedText = text.htmlToString
-        return convertedText
-    }
     
 }
-
-extension Data {
-    var htmlToAttributedString: NSAttributedString? {
-        do {
-            return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch {
-            print("error:", error)
-            return  nil
-        }
-    }
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
-    }
-}
-
-extension String {
-    var htmlToAttributedString: NSAttributedString? {
-        return Data(utf8).htmlToAttributedString
-    }
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
-    }
-}
-
-

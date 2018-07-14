@@ -9,18 +9,23 @@
 import Foundation
 
 protocol DetailedNewsViewModelType {
-    var title: Box<String?> { get }
-    var date: Box<String?> { get }
-    var text: Box<String?> { get }
     
-    func performUpdate(completion: @escaping (News)->())
+    var title: String { get }
     
-    func getArticle(urlSlug url: String, completion: @escaping (News)->())
+    var titleBox: Box<String?> { get }
+    var textBox: Box<String?> { get }
+    var publishedDateBox: Box<String?> { get }
+    
+    func performLoad(completion: @escaping (News)->())
+    
+    func performUpdate(completion: ((News)->())?, errorHandle: ((String)->())?)
+    
+    func getArticle(urlSlug url: String, completion: ((News) -> ())?, errorHandle: ((NSError)->())?)
     
     func fetchArticle(toUrlSlag urlSlug: String, completion: @escaping (News)->())
     
-    func parseHtmlText(fromHtmlText text: String) -> String
+    //    func parseHtmlText(fromHtmlText text: String) -> String
+    //    
+    //    func parseDateTimeString(oddDateTime: String) -> String
     
-    func parseDateTimeString(oddDateTime: String) -> String
-
 }

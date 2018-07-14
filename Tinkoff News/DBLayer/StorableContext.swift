@@ -23,9 +23,9 @@ protocol StorableContext {
     
     func fetchArticles(predicate: NSPredicate?, sorted: [NSSortDescriptor]?, completion: (([News]?) -> ()))
     
-//    func fetchNews(predicate: NSPredicate?, sorted: NSSortDescriptor?, completion: (([News?]) -> ()))
+    func fetchNews(objects: [ShortNewsJson], completion: (([ShortNews]) -> ()))
     
-    func findAndUpdateNews(urlSlug: String) -> News?
+//    func findAndUpdateNews(urlSlug: String) -> News?
     
     func fetch(object: FullNewsJson, completion: ((News)->()))
 }

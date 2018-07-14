@@ -7,7 +7,7 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="urlSlug" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlSlug" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="News" positionX="-63" positionY="-18" width="128" height="150"/>

@@ -11,19 +11,18 @@ import CoreData
 
 class News: NSManagedObject {
     
-    class func findOrCreateNews(matching newsInfo: FullNewsJson, in context: NSManagedObjectContext) throws -> News {
+    class func findUpdateOrCreateNews(matching newsInfo: FullNewsJson, in context: NSManagedObjectContext) throws -> News {
         let request: NSFetchRequest<News> = News.fetchRequest()
-        request.predicate = NSPredicate(format: "urlSlug = %@", newsInfo.slug)
+        request.predicate = NSPredicate(format: "id = %@", newsInfo.id)
         
         do {
             let matches = try context.fetch(request)
             if matches.count > 0 {
+                matches[0].title = newsInfo.title
+                matches[0].text = newsInfo.text
+                matches[0].createdTime = newsInfo.createdTime
+                matches[0].updatedTime = newsInfo.updatedTime
                 matches[0].counter = matches[0].counter + 1
-//                do {
-//                    try context.save()
-//                } catch {
-//                    print("Error saving context \(error)")
-//                }
                 return matches[0]
             }
         } catch {
@@ -38,5 +37,20 @@ class News: NSManagedObject {
         news.createdTime = newsInfo.createdTime
         news.updatedTime = newsInfo.updatedTime
         return news
+    }
+    
+    class func findCounter(matching urlSlag: String, in context: NSManagedObjectContext) throws -> Int {
+        let request: NSFetchRequest<News> = News.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", urlSlag)
+        do {
+            let matches = try context.fetch(request)
+            if matches.count > 0 {
+                return Int(matches[0].counter)
+            }
+        } catch {
+            print("error of fetching request \(error.localizedDescription)")
+            throw error
+        }
+        return 0
     }
 }
