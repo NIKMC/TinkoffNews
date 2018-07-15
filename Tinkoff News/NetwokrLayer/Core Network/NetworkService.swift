@@ -58,7 +58,7 @@ class NetworkService {
                 return
             }
             if self.successCodes.contains(httpResponse.statusCode){
-                print("request's been finished with success")
+                print("request's been finished with success \(String(describing: mutableRequest.url?.absoluteString))")
                 success?(data)
             } else if self.failureCodes.contains(httpResponse.statusCode){
                 print("request's been finished with failure")

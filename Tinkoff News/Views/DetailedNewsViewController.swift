@@ -23,7 +23,6 @@ class DetailedNewsViewController: UIViewController {
         guard let viewModel = viewModel else { return }
         viewModel.performUpdate(completion: { [unowned self] (news) in
             DispatchQueue.main.async {
-                print("The time is \(String(describing: news.createdTime))")
                 self.viewModel?.titleBox.value = news.title
                 self.viewModel?.textBox.value = news.text
                 self.viewModel?.publishedDateBox.value = news.createdTime

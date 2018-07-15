@@ -12,6 +12,8 @@ protocol DetailedNewsViewModelType {
     
     var title: String { get }
     
+    var delegate: UpdateProtocol { get }
+    
     var titleBox: Box<String?> { get }
     var textBox: Box<String?> { get }
     var publishedDateBox: Box<String?> { get }

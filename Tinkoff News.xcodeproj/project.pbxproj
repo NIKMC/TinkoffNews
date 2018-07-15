@@ -121,11 +121,11 @@
 				0239D62D20EF710400ED5D67 /* DBLayer */,
 				0269DD9220F119E700C65F9F /* NetwokrLayer */,
 				02C5A07E20F6706C0090EA82 /* Box.swift */,
+				02C5A09C20FA8CDC0090EA82 /* Utility.swift */,
 				02C5A09120F69BCF0090EA82 /* Model */,
 				0269DD8820F0FEF500C65F9F /* Protocols */,
 				0269DD9120F118B000C65F9F /* ViewModels */,
 				0269DD8920F0FF4400C65F9F /* Views */,
-				02C5A09C20FA8CDC0090EA82 /* Utility.swift */,
 			);
 			path = "Tinkoff News";
 			sourceTree = "<group>";

@@ -14,7 +14,7 @@ class TableViewCellViewModel: TableViewCellViewModelType {
     private var news: ShortNews
     
     var title: String {
-        return news.title
+        return news.title.htmlToString
     }
     var counter: String {
         return String(describing: news.counter)

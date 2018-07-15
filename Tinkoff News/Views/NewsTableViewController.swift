@@ -10,18 +10,11 @@ import UIKit
 
 class NewsTableViewController: UITableViewController {
     
-    //    var storage: StorableContext?
-    //    var itemArray: [News]?
-    
-    //    var pageOffset = 0
-    //    let pageSize = 20
-    //    let totalSize = 100
-    
     @IBOutlet weak var indicatorOfBottomPaging: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
+        //        UIApplication.shared.statusBarStyle = .lightContent
         self.tableView.separatorColor = UIColor.white
         self.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         self.refreshControl?.tintColor = UIColor.black
@@ -35,6 +28,13 @@ class NewsTableViewController: UITableViewController {
         
         pullToRefresh()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let indexPath = viewModel.updateSelectedRow() else { return }
+        print("update cell with indexPath = \(indexPath.row)")
+        self.tableView.reloadRows(at: [indexPath], with: .none)
     }
     
     @IBOutlet var viewModel: TableViewModel!
@@ -61,7 +61,6 @@ class NewsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return numberOfSections(in: tableView, count: viewModel.numberOfRowsInSection())
     }
     
@@ -109,8 +108,11 @@ class NewsTableViewController: UITableViewController {
                     self?.indicatorOfBottomPaging.stopAnimating()
                 }
         })
+        
         return tableViewCell
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }

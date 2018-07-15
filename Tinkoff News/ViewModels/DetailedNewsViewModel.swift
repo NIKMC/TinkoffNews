@@ -18,17 +18,19 @@ class DetailedNewsViewModel: DetailedNewsViewModelType {
         return news.title
     }
     
+    var delegate: UpdateProtocol
+    
     private var news: ShortNews
     
     var titleBox: Box<String?> = Box(nil)
     var textBox: Box<String?> = Box(nil)
     var publishedDateBox: Box<String?> = Box(nil)
     
-    init(news: ShortNews) {
+    init(news: ShortNews, delegate: UpdateProtocol) {
         self.storage = CoreDataStorageContext()
         self.networkManagerOfArticle = ArticleManager()
         self.news = news
-        
+        self.delegate = delegate
     }
     
     func performLoad(completion: @escaping (News)->()) {
@@ -39,10 +41,9 @@ class DetailedNewsViewModel: DetailedNewsViewModelType {
     }
     
     func performUpdate(completion: ((News)->())?, errorHandle: ((String)->())?) {
-        print("performUpdate")
-        
-        getArticle(urlSlug: self.news.slug, completion: { (result) in
-            print("performUpdate \(result.createdTime!)")
+        getArticle(urlSlug: self.news.slug, completion: { [weak self] (result) in
+            print("performUpdate update delegate")
+            self?.delegate.updateCounterForCell()
             completion?(result)
         }, errorHandle: { (error) in
             let errorInfo = (error.domain, error.code)

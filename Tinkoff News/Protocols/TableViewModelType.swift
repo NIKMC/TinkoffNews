@@ -21,11 +21,17 @@ protocol TableViewModelType {
     
     func selectRow(atIndexPath indexPath: IndexPath)
     
-    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: @escaping()->(), completion: (()->())?, errorHandle: ((String)->())?)
+    func updateSelectedRow() -> IndexPath?
+    
+    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: (()->())?, completion: (()->())?, errorHandle: ((String)->())?)
     
     func getNews(set: Int, size: Int, completion: (([ShortNews])->())?, errorHandle: ((NSError)->())?)
     
     func loadToRefresh(completion: (()->())?, errorHandle: ((String)->())?)
     
     func fetchListOfNews(completion: @escaping()->())
+}
+
+protocol UpdateProtocol {
+    func updateCounterForCell()
 }

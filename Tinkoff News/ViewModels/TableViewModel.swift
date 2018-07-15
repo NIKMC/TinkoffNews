@@ -86,15 +86,15 @@ class TableViewModel: NSObject, TableViewModelType {
     func viewModelForSelectedRow() -> DetailedNewsViewModelType? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         //TODO: I'm not sure
-        return DetailedNewsViewModel(news: news![selectedIndexPath.row])
+        return DetailedNewsViewModel(news: news![selectedIndexPath.row], delegate: self)
     }
     
-    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: @escaping()->(), completion: (()->())?, errorHandle: ((String)->())?) {
+    func pagingNews(atIndexPath indexPath: IndexPath, startAnimation: (()->())?, completion: (()->())?, errorHandle: ((String)->())?) {
         guard let news = news else { return }
         //TODO: Проверить логику на наличие кешированных данных, если pageOffSet = default тогда не делаем пагинацию иначе делаем
         guard pageOffSet != DEFAULT_SET else { return }
         if indexPath.row == news.count - 1 {
-            startAnimation()
+            startAnimation?()
             getNews(set: pageOffSet, size: pageSize, completion:  { [weak self] result in
                 self?.news?.append(contentsOf: result)
                 completion?()
@@ -117,11 +117,31 @@ class TableViewModel: NSObject, TableViewModelType {
         self.selectedIndexPath = indexPath
     }
     
+    func updateSelectedRow() -> IndexPath? {
+        return self.selectedIndexPath
+    }
+    
     override init() {
         self.storage = CoreDataStorageContext()
         self.pageSize = DEFAULT_SIZE
         self.pageOffSet = DEFAULT_SET
         self.news = [ShortNews]()
     }
+    
+}
+
+extension TableViewModel: UpdateProtocol {
+    func updateCounterForCell() {
+        guard let index = self.selectedIndexPath else { return }
+        guard let id = self.news?[index.row].id else { return }
+        self.storage.fetchArticles(predicate: NSPredicate(format: "id = %@", id), sorted: nil) { [weak self] (articles) in
+            guard let article = articles?.first else { return }
+            let currentNews = ShortNews(fromCoreData: article)
+            self?.news?[index.row] = currentNews
+            print("update counter: \(currentNews.counter) for cell with title: \(currentNews.title)")
+        }
+        
+    }
+    
     
 }
